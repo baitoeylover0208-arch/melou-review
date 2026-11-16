@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Melou • Commission & Shop Bio</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Prompt & Mitr for soft rounded Thai aesthetic -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600&family=Prompt:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Prompt', 'sans-serif'],
+                        display: ['Mitr', 'sans-serif'],
+                    },
+                    colors: {
+                        melou: {
+                            50: '#f5faff',
+                            100: '#e8f3ff',
+                            200: '#d1e7ff',
+                            300: '#a8d1ff',
+                            400: '#7ab8ff',
+                            500: '#549ef8',
+                            600: '#3b82f6',
+                            text: '#4a5568',
+                            muted: '#8c9bb0',
+                        }
+                    },
+                    boxShadow: {
+                        'kawaii': '0 8px 24px -4px rgba(139, 188, 248, 0.25), 0 2px 6px -1px rgba(139, 188, 248, 0.12)',
+                        'kawaii-sm': '0 4px 14px -2px rgba(139, 188, 248, 0.22)',
+                        'kawaii-inner': 'inset 0 2px 6px rgba(139, 188, 248, 0.15)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom Kawaii Pastel Styles & Animations */
+        body {
+            background: linear-gradient(180deg, #e7f3ff 0%, #f4f9ff 45%, #ffffff 100%);
+            min-height: 100vh;
+            color: #4a5568;
+            overflow-x: hidden;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Subtle cloud pattern background */
+        .cloud-bg-pattern {
+            background-image: 
+                radial-gradient(circle at 15% 15%, rgba(255, 255, 255, 0.85) 0%, transparent 25%),
+                radial-gradient(circle at 85% 25%, rgba(255, 255, 255, 0.8) 0%, transparent 30%),
+                radial-gradient(circle at 50% 60%, rgba(219, 234, 254, 0.4) 0%, transparent 45%);
+        }
+
+        /* Floating gentle animation */
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-5px); }
+        }
+        .animate-float {
+            animation: floatSlow 3.5s ease-in-out infinite;
+        }
+
+        /* Smooth page fade transition */
+        .view-section {
+            display: none;
+            animation: fadeSlideIn 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        .view-section.active {
+            display: block;
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px) scale(0.99);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        /* Cute Banner Pattern */
+        .banner-sky-left {
+            background: linear-gradient(135deg, #d8ecff 0%, #eef7ff 55%, #fff8eb 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .banner-sky-right {
+            background: linear-gradient(135deg, #e6f2ff 0%, #f4f9ff 50%, #e1effe 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Custom scrollbar hiding for sleek mobile look */
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbe2ff;
+            border-radius: 9999px;
+        }
+
+        /* Interactive card press effect */
+        .kawaii-btn {
+            transition: all 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .kawaii-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* Vinyl Spin & Music Note Animations */
+        @keyframes spinVinyl {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .vinyl-spinning {
+            animation: spinVinyl 6s linear infinite;
+        }
+        .vinyl-paused {
+            animation: spinVinyl 6s linear infinite;
+            animation-play-state: paused;
+        }
+
+        @keyframes floatNote {
+            0% { opacity: 0; transform: translateY(0) scale(0.7) rotate(-10deg); }
+            50% { opacity: 1; transform: translateY(-10px) scale(1) rotate(10deg); }
+            100% { opacity: 0; transform: translateY(-20px) scale(0.8) rotate(-5deg); }
+        }
+        .music-note-anim {
+            animation: floatNote 2.2s ease-in-out infinite;
+        }
+
+        /* Custom Pastel Range Slider */
+        input[type="range"].kawaii-slider {
+            -webkit-appearance: none;
+            appearance: none;
+            background: #e0f2fe;
+            height: 5px;
+            border-radius: 9999px;
+            outline: none;
+        }
+        input[type="range"].kawaii-slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #549ef8;
+            border: 2px solid #ffffff;
+            box-shadow: 0 2px 5px rgba(84, 158, 248, 0.45);
+            cursor: pointer;
+        }
+
+        /* Floating / Falling Delicate Outline Hearts & Stars Overlay (Matches reference image) */
+        @keyframes particleFallSway {
+            0% {
+                transform: translate3d(0, -40px, 0) rotate(0deg);
+                opacity: 0;
+            }
+            12% {
+                opacity: var(--p-opacity, 0.55);
+            }
+            50% {
+                transform: translate3d(var(--p-sway, 18px), 50vh, 0) rotate(var(--p-rot-mid, 14deg));
+            }
+            88% {
+                opacity: var(--p-opacity, 0.55);
+            }
+            100% {
+                transform: translate3d(calc(var(--p-sway, 18px) * -0.6), 108vh, 0) rotate(var(--p-rot-end, -18deg));
+                opacity: 0;
+            }
+        }
+
+        .falling-particle {
+            position: fixed;
+            top: 0;
+            pointer-events: none;
+            will-change: transform, opacity;
+            animation: particleFallSway var(--p-dur, 12s) linear infinite;
+            animation-delay: var(--p-delay, 0s);
+        }
+
+        /* Mini Tap-to-Spawn Heart/Star Burst Animation */
+        @keyframes tapBurstFloat {
+            0% {
+                opacity: 0.9;
+                transform: translate(-50%, -50%) scale(0.4) rotate(0deg);
+            }
+            50% {
+                opacity: 0.85;
+                transform: translate(calc(-50% + var(--tx, 0px)), calc(-50% + var(--ty, -28px))) scale(1.05) rotate(var(--tr, 15deg));
+            }
+            100% {
+                opacity: 0;
+                transform: translate(calc(-50% + var(--tx, 0px) * 1.4), calc(-50% + var(--ty, -45px) * 1.3)) scale(0.75) rotate(calc(var(--tr, 15deg) * 1.6));
+            }
+        }
+
+        .tap-burst-item {
+            position: fixed;
+            pointer-events: none;
+            z-index: 60;
+            animation: tapBurstFloat 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+    </style>
+</head>
+<body class="cloud-bg-pattern flex justify-center items-start py-4 px-3 sm:py-8">
+
+    <!-- Full-Viewport Delicate Falling Particles Overlay (Non-blocking) -->
+    <div id="particleOverlay" class="fixed inset-0 pointer-events-none overflow-hidden z-20" aria-hidden="true"></div>
+
+    <!-- Decorative Floating Clouds in Background (Desktop/Tablet) -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden z-0 max-w-2xl mx-auto">
+        <svg class="absolute top-12 left-4 w-16 h-10 text-white/70 animate-float" viewBox="0 0 64 40" fill="currentColor">
+            <path d="M18 36h30c7.7 0 14-6.3 14-14 0-7.2-5.4-13.1-12.4-13.9C47.5 3.4 42.6 0 37 0c-6.8 0-12.5 4.8-13.8 11.2C21.6 10.4 19.8 10 18 10c-6.6 0-12 5.4-12 12 0 .7.1 1.4.2 2C2.6 25.3 0 28.8 0 33c0 1.7 1.3 3 3 3h15z"/>
+        </svg>
+        <svg class="absolute top-48 right-3 w-20 h-12 text-white/60 animate-float" style="animation-delay: 1.2s;" viewBox="0 0 64 40" fill="currentColor">
+            <path d="M18 36h30c7.7 0 14-6.3 14-14 0-7.2-5.4-13.1-12.4-13.9C47.5 3.4 42.6 0 37 0c-6.8 0-12.5 4.8-13.8 11.2C21.6 10.4 19.8 10 18 10c-6.6 0-12 5.4-12 12 0 .7.1 1.4.2 2C2.6 25.3 0 28.8 0 33c0 1.7 1.3 3 3 3h15z"/>
+        </svg>
+    </div>
+
+    <!-- Main Mobile-First Container (Max 440px like reference) -->
+    <main class="relative z-10 w-full max-w-[430px] pb-12">
+
+        <!-- Top Decorative Mini Ribbon / Status Bar Accent -->
+        <div class="flex justify-between items-center px-2 mb-2 text-[11px] text-melou-muted font-medium">
+            <span class="flex items-center gap-1.5 bg-white/75 backdrop-blur-sm px-2.5 py-0.5 rounded-full shadow-xs">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Open Commission
+            </span>
+
+            <!-- Subtle Particle Effect Style Switcher Pill -->
+            <button onclick="cycleParticleTheme()" id="particleToggleBtn" class="kawaii-btn flex items-center gap-1 bg-white/80 hover:bg-white backdrop-blur-sm px-2.5 py-0.5 rounded-full shadow-xs text-melou-500 border border-blue-100/70 transition-colors" title="เปลี่ยนรูปแบบของโปรยบนหน้าจอ">
+                <span id="particleThemeIcon">🤍</span>
+                <span id="particleThemeLabel">โปรยหัวใจ & ดาว</span>
+            </button>
+        </div>
+
+        <!-- Floating White Pill Header Bar (Matches reference top bar) -->
+        <header class="sticky top-3 z-30 bg-white/95 backdrop-blur-md rounded-full p-2 pl-2.5 pr-3 shadow-kawaii border border-blue-50/80 flex items-center justify-between mb-5">
+            <div class="flex items-center gap-3">
+                <!-- Back Button (Visible only on sub-pages) -->
+                <button id="headerBackBtn" onclick="navigateTo('home')" class="hidden w-9 h-9 rounded-full bg-melou-50 hover:bg-melou-100 text-melou-500 flex items-center justify-center transition-colors kawaii-btn" aria-label="กลับหน้าหลัก">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                    </svg>
+                </button>
+
+                <!-- Cute Shop Avatar -->
+                <div onclick="navigateTo('home')" class="cursor-pointer relative w-11 h-11 rounded-2xl bg-gradient-to-br from-blue-100 via-sky-50 to-amber-50 p-0.5 shadow-inner flex items-center justify-center overflow-hidden border border-blue-100">
+                    <!-- Custom Cute Bear/Cloud Mascot SVG -->
+                    <svg class="w-9 h-9" viewBox="0 0 64 64" fill="none">
+                        <circle cx="18" cy="20" r="8" fill="#FFF8EE" stroke="#93C5FD" stroke-width="2.5"/>
+                        <circle cx="46" cy="20" r="8" fill="#FFF8EE" stroke="#93C5FD" stroke-width="2.5"/>
+                        <circle cx="18" cy="20" r="4" fill="#DBEAFE"/>
+                        <circle cx="46" cy="20" r="4" fill="#DBEAFE"/>
+                        <ellipse cx="32" cy="35" rx="20" ry="18" fill="#FFFFFF" stroke="#93C5FD" stroke-width="2.5"/>
+                        <!-- Eyes -->
+                        <circle cx="25" cy="33" r="2.2" fill="#475569"/>
+                        <circle cx="39" cy="33" r="2.2" fill="#475569"/>
+                        <!-- Blush -->
+                        <ellipse cx="21" cy="37" rx="3" ry="1.8" fill="#BFDBFE"/>
+                        <ellipse cx="43" cy="37" rx="3" ry="1.8" fill="#BFDBFE"/>
+                        <!-- Nose & Mouth -->
+                        <ellipse cx="32" cy="36.5" rx="2.5" ry="1.8" fill="#60A5FA"/>
+                        <path d="M29.5 39.5 Q32 41.5 34.5 39.5" stroke="#475569" stroke-width="1.8" stroke-linecap="round"/>
+                        <!-- Cute Blue Ribbon -->
+                        <path d="M26 51 L32 48 L38 51 L36 55 L32 52 L28 55 Z" fill="#93C5FD"/>
+                    </svg>
+                </div>
+
+                <!-- Brand Name -->
+                <div onclick="navigateTo('home')" class="cursor-pointer">
+                    <h1 class="font-display font-semibold text-lg tracking-wide text-slate-600 italic leading-tight">MELOU</h1>
+                    <p id="headerSubtitle" class="text-[11px] text-melou-muted -mt-0.5">Art & Commission Studio</p>
+                </div>
+            </div>
+
+            <!-- Hamburger Menu Button -->
+            <button onclick="toggleDrawer(true)" class="w-10 h-10 rounded-full bg-melou-50/80 hover:bg-melou-100 text-melou-500 flex items-center justify-center transition-colors kawaii-btn border border-blue-100/60" aria-label="เมนูนำทาง">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16"/>
+                </svg>
+            </button>
+        </header>
+
+        <!-- ========================================================= -->
+        <!-- CUTE PASTEL BGM MUSIC PLAYER WIDGET                       -->
+        <!-- ========================================================= -->
+        <div class="bg-white/95 backdrop-blur-md rounded-[26px] p-3 px-3.5 shadow-kawaii border border-white mb-4 relative overflow-hidden">
+            <!-- Hidden HTML5 Audio Element for Custom MP3 / Audio URL -->
+            <audio id="customAudioPlayer" class="hidden" preload="metadata"></audio>
+
+            <div class="flex items-center justify-between gap-2.5">
+                <!-- Left: Spinning Pastel Vinyl / CD Disc -->
+                <div class="relative shrink-0">
+                    <div id="vinylDisc" class="vinyl-paused w-12 h-12 rounded-full bg-gradient-to-tr from-sky-300 via-blue-200 to-indigo-100 p-1 shadow-inner border-2 border-white flex items-center justify-center relative">
+                        <!-- Grooves -->
+                        <div class="w-full h-full rounded-full border border-white/60 flex items-center justify-center">
+                            <div class="w-4 h-4 rounded-full bg-white shadow-xs flex items-center justify-center">
+                                <div class="w-1.5 h-1.5 rounded-full bg-sky-400"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Floating Music Notes when playing -->
+                    <span id="floatingNote1" class="hidden absolute -top-2 -right-1 text-[11px] text-sky-500 music-note-anim pointer-events-none">♪</span>
+                    <span id="floatingNote2" class="hidden absolute -top-1 -left-1 text-[10px] text-blue-400 music-note-anim pointer-events-none" style="animation-delay: 0.9s;">♫</span>
+                </div>
+
+                <!-- Center: Track Title, Artist & Progress Bar -->
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center justify-between gap-1">
+                        <div class="truncate">
+                            <p id="bgmTrackTitle" class="font-display font-medium text-xs text-slate-700 truncate">☁️ Cloud Music Box</p>
+                            <p id="bgmTrackSub" class="text-[10px] text-melou-muted truncate">Melou BGM • กล่องดนตรีกล่อมฝัน</p>
+                        </div>
+                        <button onclick="toggleCustomMusicModal()" title="เพิ่มเพลงของตัวเอง / วางลิงก์" class="shrink-0 text-[10px] bg-melou-50 hover:bg-melou-100 text-melou-500 px-2 py-0.5 rounded-full border border-blue-100/70 transition-colors">
+                            + เพลง
+                        </button>
+                    </div>
+
+                    <!-- Progress Bar & Time -->
+                    <div class="mt-1.5 flex items-center gap-2">
+                        <div onclick="seekBgm(event)" class="flex-1 h-1.5 bg-melou-100 rounded-full overflow-hidden cursor-pointer relative">
+                            <div id="bgmProgressBar" class="h-full bg-gradient-to-r from-sky-300 to-melou-500 rounded-full transition-all duration-200" style="width: 0%"></div>
+                        </div>
+                        <span id="bgmTimeText" class="text-[9px] text-melou-muted font-mono shrink-0">0:00</span>
+                    </div>
+                </div>
+
+                <!-- Right: Playback Controls (Prev / Play-Pause / Next) -->
+                <div class="flex items-center gap-1 shrink-0">
+                    <button onclick="prevTrack()" class="w-7 h-7 rounded-full hover:bg-melou-50 text-melou-400 hover:text-melou-500 flex items-center justify-center transition-colors kawaii-btn" aria-label="เพลงก่อนหน้า">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
+                    </button>
+
+                    <button id="bgmPlayBtn" onclick="togglePlayBgm()" class="w-9 h-9 rounded-full bg-gradient-to-b from-sky-400 to-melou-500 text-white shadow-kawaii-sm flex items-center justify-center kawaii-btn" aria-label="เล่นหรือหยุดเพลง">
+                        <!-- Play Icon -->
+                        <svg id="iconPlay" class="w-4 h-4 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <!-- Pause Icon -->
+                        <svg id="iconPause" class="w-4 h-4 hidden" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                    </button>
+
+                    <button onclick="nextTrack()" class="w-7 h-7 rounded-full hover:bg-melou-50 text-melou-400 hover:text-melou-500 flex items-center justify-center transition-colors kawaii-btn" aria-label="เพลงถัดไป">
+                        <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Collapsible Bottom Bar: Track Pills & Volume Slider -->
+            <div class="mt-2.5 pt-2 border-t border-blue-50/90 flex items-center justify-between gap-2">
+                <!-- 3 Built-in Cute Tracks Quick Selector -->
+                <div id="trackPillsContainer" class="flex items-center gap-1 overflow-x-auto no-scrollbar">
+                    <button onclick="selectBuiltInTrack(0)" data-track="0" class="track-pill active text-[10px] px-2 py-0.5 rounded-full bg-sky-100 text-sky-600 font-medium transition-colors shrink-0">1. Music Box</button>
+                    <button onclick="selectBuiltInTrack(1)" data-track="1" class="track-pill text-[10px] px-2 py-0.5 rounded-full bg-melou-50 text-melou-muted hover:bg-melou-100 transition-colors shrink-0">2. Cozy Lo-Fi</button>
+                    <button onclick="selectBuiltInTrack(2)" data-track="2" class="track-pill text-[10px] px-2 py-0.5 rounded-full bg-melou-50 text-melou-muted hover:bg-melou-100 transition-colors shrink-0">3. Pastel Pop</button>
+                </div>
+
+                <!-- Volume Control -->
+                <div class="flex items-center gap-1.5 shrink-0">
+                    <button onclick="toggleMuteBgm()" id="bgmMuteBtn" class="text-melou-400 hover:text-melou-500 text-xs" aria-label="เปิด/ปิดเสียง">
+                        🔊
+                    </button>
+                    <input id="bgmVolumeSlider" type="range" min="0" max="100" value="65" oninput="changeBgmVolume(this.value)" class="kawaii-slider w-14">
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================================= -->
+        <!-- VIEW 1: HOME VIEW (หน้าหลัก - Matches Screenshot 1)        -->
+        <!-- ========================================================= -->
+        <section id="view-home" class="view-section active space-y-3.5">
+
+            <!-- Top 2-Column Cute Banner Cards -->
+            <div class="grid grid-cols-2 gap-3 mb-4">
+                <!-- Left Banner: Check Q & Example Work -->
+                <div onclick="navigateTo('queue')" class="kawaii-btn cursor-pointer banner-sky-left rounded-[26px] p-3.5 shadow-kawaii border-2 border-white flex flex-col items-center justify-center text-center min-h-[106px] group">
+                    <!-- Decorative Clouds & Stars -->
+                    <svg class="absolute top-1.5 left-2 w-6 h-4 text-white/90" viewBox="0 0 32 20" fill="currentColor"><circle cx="10" cy="12" r="6"/><circle cx="18" cy="10" r="7"/><circle cx="24" cy="13" r="5"/></svg>
+                    <svg class="absolute bottom-1.5 right-2 w-5 h-5 text-amber-200/90" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 7.2h7.6l-6 4.8 2.3 7.2-6.3-4.6-6.3 4.6 2.3-7.2-6-4.8h7.6z"/></svg>
+                    
+                    <div class="bg-white/85 backdrop-blur-xs px-2.5 py-0.5 rounded-full text-[10px] font-medium text-melou-500 mb-1 shadow-xs">
+                        ☁️ Status & Art
+                    </div>
+                    <h2 class="font-display font-semibold text-[17px] text-sky-600 tracking-tight drop-shadow-xs group-hover:scale-105 transition-transform">
+                        Check Q
+                    </h2>
+                    <p class="text-[11px] font-medium text-slate-500 mt-0.5">และตัวอย่างงาน</p>
+                </div>
+
+                <!-- Right Banner: TOS (Terms of Service) -->
+                <div onclick="openTosModal()" class="kawaii-btn cursor-pointer banner-sky-right rounded-[26px] p-3.5 shadow-kawaii border-2 border-white flex flex-col items-center justify-center text-center min-h-[106px] group">
+                    <!-- Decorative Ribbon & Clouds -->
+                    <svg class="absolute top-1.5 right-2 w-6 h-4 text-white/90" viewBox="0 0 32 20" fill="currentColor"><circle cx="10" cy="12" r="6"/><circle cx="18" cy="10" r="7"/><circle cx="24" cy="13" r="5"/></svg>
+                    <span class="absolute bottom-2 left-2.5 text-xs opacity-70">🎀</span>
+
+                    <div class="bg-white/85 backdrop-blur-xs px-2.5 py-0.5 rounded-full text-[10px] font-medium text-melou-500 mb-1 shadow-xs">
+                        ✨ Read First
+                    </div>
+                    <h2 class="font-display font-semibold text-[17px] text-sky-600 tracking-tight drop-shadow-xs group-hover:scale-105 transition-transform">
+                        T.O.S.
+                    </h2>
+                    <p class="text-[11px] font-medium text-slate-500 mt-0.5">เงื่อนไขการสั่งงาน</p>
+                </div>
+            </div>
+
+            <!-- Main Action List Cards (Matching Screenshot 1's vertical pill cards) -->
+            
+            <!-- 1. ราคางาน -->
+            <div onclick="navigateTo('price')" class="kawaii-btn cursor-pointer bg-white hover:bg-melou-50/40 rounded-[26px] p-3.5 pl-4 pr-4 shadow-kawaii border border-white flex items-center justify-between group">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-12 h-12 rounded-full bg-melou-50 border border-blue-100 flex items-center justify-center text-melou-500 shrink-0 group-hover:scale-105 transition-transform">
+                        <!-- Tag Icon -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-medium text-[15px] text-slate-700">ราคางาน</h3>
+                        <p class="text-xs text-melou-muted">ดูเรทราคาและคำนวณราคาเบื้องต้น</p>
+                    </div>
+                </div>
+                <svg class="w-4 h-4 text-melou-300 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+            </div>
+
+            <!-- 2. เช็กคิว -->
+            <div onclick="navigateTo('queue')" class="kawaii-btn cursor-pointer bg-white hover:bg-melou-50/40 rounded-[26px] p-3.5 pl-4 pr-4 shadow-kawaii border border-white flex items-center justify-between group">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-12 h-12 rounded-full bg-melou-50 border border-blue-100 flex items-center justify-center text-melou-500 shrink-0 group-hover:scale-105 transition-transform">
+                        <!-- Cute Envelope/Calendar Icon -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-medium text-[15px] text-slate-700">เช็กคิว</h3>
+                        <p class="text-xs text-melou-muted">ดูคิวงานและสถานะงานของคุณ</p>
+                    </div>
+                </div>
+                <svg class="w-4 h-4 text-melou-300 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+            </div>
+
+            <!-- 3. รีวิว (Matches Screenshot 2 feature!) -->
+            <div onclick="navigateTo('review')" class="kawaii-btn cursor-pointer bg-white hover:bg-melou-50/40 rounded-[26px] p-3.5 pl-4 pr-4 shadow-kawaii border border-white flex items-center justify-between group">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-12 h-12 rounded-full bg-melou-50 border border-blue-100 flex items-center justify-center text-melou-500 shrink-0 group-hover:scale-105 transition-transform">
+                        <!-- Cute Ribbon / Star Icon -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <h3 class="font-display font-medium text-[15px] text-slate-700">รีวิว & สะสมแต้ม</h3>
+                            <span class="bg-sky-100 text-sky-600 text-[10px] font-medium px-2 py-0.5 rounded-full">★ 4.9</span>
+                        </div>
+                        <p class="text-xs text-melou-muted">รีวิวจากลูกค้า ให้คะแนน และบัตรสะสมแต้ม</p>
+                    </div>
+                </div>
+                <svg class="w-4 h-4 text-melou-300 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+            </div>
+
+            <!-- 4. ส่งบรีฟงาน -->
+            <div onclick="navigateTo('brief')" class="kawaii-btn cursor-pointer bg-white hover:bg-melou-50/40 rounded-[26px] p-3.5 pl-4 pr-4 shadow-kawaii border border-white flex items-center justify-between group">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-12 h-12 rounded-full bg-melou-50 border border-blue-100 flex items-center justify-center text-melou-500 shrink-0 group-hover:scale-105 transition-transform">
+                        <!-- Cloud / Sparkle Icon -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-medium text-[15px] text-slate-700">ส่งบรีฟงาน</h3>
+                        <p class="text-xs text-melou-muted">เลือกแบบและส่งรายละเอียดงาน</p>
+                    </div>
+                </div>
+                <svg class="w-4 h-4 text-melou-300 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+            </div>
+
+            <!-- 5. ช่องทางติดต่อ -->
+            <div onclick="navigateTo('contact')" class="kawaii-btn cursor-pointer bg-white hover:bg-melou-50/40 rounded-[26px] p-3.5 pl-4 pr-4 shadow-kawaii border border-white flex items-center justify-between group">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-12 h-12 rounded-full bg-melou-50 border border-blue-100 flex items-center justify-center text-melou-500 shrink-0 group-hover:scale-105 transition-transform">
+                        <!-- Paw / Chat Icon -->
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h3 class="font-display font-medium text-[15px] text-slate-700">ช่องทางติดต่อ</h3>
+                        <p class="text-xs text-melou-muted">ติดต่อสอบถามและโซเชียลมีเดียทั้งหมด</p>
+                    </div>
+                </div>
+                <svg class="w-4 h-4 text-melou-300 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/>
+                </svg>
+            </div>
+
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- VIEW 2: PRICE & CALCULATOR VIEW (ราคางาน & คำนวณราคา)       -->
+        <!-- ========================================================= -->
+        <section id="view-price" class="view-section space-y-4">
+            <div class="bg-white rounded-[28px] p-5 shadow-kawaii border border-white">
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="font-display font-semibold text-base text-slate-700 flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-full bg-blue-100 text-melou-500 flex items-center justify-center text-sm">🏷️</span>
+                        เรทราคาคอมมิชชัน
+                    </h2>
+                    <span class="text-[11px] bg-melou-50 text-melou-500 px-2.5 py-1 rounded-full font-medium">สกุลเงิน THB</span>
+                </div>
+
+                <!-- Price Rate Items -->
+                <div class="space-y-2.5 text-sm">
+                    <div class="flex justify-between items-center p-3 rounded-2xl bg-melou-50/60 border border-blue-100/50">
+                        <div>
+                            <p class="font-medium text-slate-700">Chibi (จิบิเต็มตัว)</p>
+                            <p class="text-[11px] text-melou-muted">ลงสีฟูลซีจี พื้นหลังโปร่งใส/สีพื้น</p>
+                        </div>
+                        <span class="font-display font-semibold text-melou-500 bg-white px-3 py-1 rounded-full shadow-xs">250.-</span>
+                    </div>
+
+                    <div class="flex justify-between items-center p-3 rounded-2xl bg-melou-50/60 border border-blue-100/50">
+                        <div>
+                            <p class="font-medium text-slate-700">Bust-up (อกขึ้นไป)</p>
+                            <p class="text-[11px] text-melou-muted">เน้นใบหน้าและดีเทลแววตาละมุน</p>
+                        </div>
+                        <span class="font-display font-semibold text-melou-500 bg-white px-3 py-1 rounded-full shadow-xs">390.-</span>
+                    </div>
+
+                    <div class="flex justify-between items-center p-3 rounded-2xl bg-melou-50/60 border border-blue-100/50">
+                        <div>
+                            <p class="font-medium text-slate-700">Half-body (ครึ่งตัว)</p>
+                            <p class="text-[11px] text-melou-muted">เห็นท่าทางมือและพร็อพน่ารักๆ</p>
+                        </div>
+                        <span class="font-display font-semibold text-melou-500 bg-white px-3 py-1 rounded-full shadow-xs">550.-</span>
+                    </div>
+
+                    <div class="flex justify-between items-center p-3 rounded-2xl bg-melou-50/60 border border-blue-100/50">
+                        <div>
+                            <p class="font-medium text-slate-700">Full-body (เต็มตัว)</p>
+                            <p class="text-[11px] text-melou-muted">จัดเต็มชุดและองค์ประกอบ</p>
+                        </div>
+                        <span class="font-display font-semibold text-melou-500 bg-white px-3 py-1 rounded-full shadow-xs">790.-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interactive Mini Price Calculator -->
+            <div class="bg-white rounded-[28px] p-5 shadow-kawaii border border-white">
+                <h3 class="font-display font-semibold text-base text-slate-700 mb-3 flex items-center gap-2">
+                    <span class="w-7 h-7 rounded-full bg-sky-100 text-sky-500 flex items-center justify-center text-sm">🧮</span>
+                    คำนวณราคาเบื้องต้น
+                </h3>
+
+                <div class="space-y-3 text-sm">
+                    <div>
+                        <label class="block text-xs text-melou-muted mb-1">ประเภทงาน</label>
+                        <select id="calcType" onchange="calculatePrice()" class="w-full rounded-2xl bg-melou-50/80 border border-blue-100 px-3.5 py-2.5 text-slate-700 focus:outline-none focus:ring-2 focus:ring-melou-300">
+                            <option value="250">Chibi (250 บาท)</option>
+                            <option value="390" selected>Bust-up (390 บาท)</option>
+                            <option value="550">Half-body (550 บาท)</option>
+                            <option value="790">Full-body (790 บาท)</option>
+                        </select>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-2.5">
+                        <div>
+                            <label class="block text-xs text-melou-muted mb-1">จำนวนตัวละคร</label>
+                            <select id="calcChars" onchange="calculatePrice()" class="w-full rounded-2xl bg-melou-50/80 border border-blue-100 px-3 py-2.5 text-slate-700 focus:outline-none focus:ring-2 focus:ring-melou-300">
+                                <option value="1">1 ตัวละคร</option>
+                                <option value="1.8">2 ตัวละคร (x1.8)</option>
+                                <option value="2.5">3 ตัวละคร (x2.5)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs text-melou-muted mb-1">พื้นหลัง / การใช้งาน</label>
+                            <select id="calcExtra" onchange="calculatePrice()" class="w-full rounded-2xl bg-melou-50/80 border border-blue-100 px-3 py-2.5 text-slate-700 focus:outline-none focus:ring-2 focus:ring-melou-300">
+                                <option value="0">พื้นหลังเรียบ (ฟรี)</option>
+                                <option value="100">พื้นหลังมีดีเทล (+100)</option>
+                                <option value="300">เชิงพาณิชย์ (+300)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Estimated Result Box -->
+                    <div class="mt-4 p-4 rounded-2xl bg-gradient-to-r from-melou-100/70 to-sky-100/70 border border-blue-200/60 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs text-slate-500">ราคาประเมินเบื้องต้น</p>
+                            <p class="text-[10px] text-melou-muted">*อาจปรับตามความซับซ้อนของชุด</p>
+                        </div>
+                        <div class="text-right">
+                            <span id="calcTotalDisplay" class="font-display font-semibold text-2xl text-sky-600">390</span>
+                            <span class="text-xs font-medium text-sky-600 ml-0.5">บาท</span>
+                        </div>
+                    </div>
+
+                    <button onclick="navigateTo('brief')" class="w-full mt-2 py-3 rounded-full bg-melou-400 hover:bg-melou-500 text-white font-display font-medium text-sm shadow-kawaii-sm kawaii-btn">
+                        สนใจสั่งงาน / ไปหน้าส่งบรีฟ ✨
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- VIEW 3: QUEUE TRACKER & SAMPLES VIEW (เช็กคิว & ตัวอย่าง)    -->
+        <!-- ========================================================= -->
+        <section id="view-queue" class="view-section space-y-4">
+            <!-- Queue Summary Card -->
+            <div class="bg-white rounded-[28px] p-5 shadow-kawaii border border-white">
+                <div class="flex items-center justify-between mb-3">
+                    <h2 class="font-display font-semibold text-base text-slate-700 flex items-center gap-2">
+                        <span class="w-7 h-7 rounded-full bg-blue-100 text-melou-500 flex items-center justify-center text-sm">☁️</span>
+                        สถานะคิวงานปัจจุบัน
+                    </h2>
+                    <span class="bg-emerald-50 text-emerald-600 border border-emerald-200 text-[11px] font-medium px-2.5 py-0.5 rounded-full">
+                        ว่าง 2 คิว
+                    </span>
+                </div>
+
+                <div class="space-y-3">
+                    <!-- Queue Item 1 -->
+                    <div class="p-3.5 rounded-2xl bg-melou-50/70 border border-blue-100/70">
+                        <div class="flex justify-between items-center mb-1.5">
+                            <span class="font-medium text-sm text-slate-700">Q1 • คุณมินตรา (Bust-up)</span>
+                            <span class="text-[11px] bg-sky-100 text-sky-600 px-2.5 py-0.5 rounded-full font-medium">กำลังลงสี 80%</span>
+                        </div>
+                        <div class="w-full h-2 bg-white rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-sky-300 to-blue-400 h-full rounded-full" style="width: 80%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Queue Item 2 -->
+                    <div class="p-3.5 rounded-2xl bg-melou-50/70 border border-blue-100/70">
+                        <div class="flex justify-between items-center mb-1.5">
+                            <span class="font-medium text-sm text-slate-700">Q2 • คุณนภัส (Chibi x2)</span>
+                            <span class="text-[11px] bg-amber-50 text-amber-600 border border-amber-200/60 px-2.5 py-0.5 rounded-full font-medium">ตัดเส้น 45%</span>
+                        </div>
+                        <div class="w-full h-2 bg-white rounded-full overflow-hidden">
+                            <div class="bg-gradient-to-r from-sky-300 to-blue-400 h-full rounded-full" style="width: 45%"></div>
+                        </div>
+                    </div>
+
+                    <!-- Queue Item 3 -->
+                    <div class="p-3.5 rounded-2xl bg-melou-50/40 border border-blue-100/50">
+                        <div class="flex justify-between items-center mb-1.5">
+                            <span class="font-medium text-sm text-slate-600">Q3 • คุณไอริส (Half-body)</span>
+                            <span class="text-[11px] bg-white text-slate-500 px-2.5 py-0.5 rounded-full font-medium border border-slate-100">รอส่งร่างภาพ 15%</span>
+                        </div>
+                        <div class="w-full h-2 bg-white rounded-full overflow-hidden">
+                            <div class="bg-sky-200 h-full rounded-full" style="width: 15%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Example Works Mini Gallery -->
+            <div class="bg-white rounded-[28px] p-5 shadow-kawaii border border-white">
+                <h3 class="font-display font-semibold text-base text-slate-700 mb-3 flex items-center gap-2">
+                    <span class="w-7 h-7 rounded-full bg-sky-100 text-sky-500 flex items-center justify-center text-sm">🎨</span>
+                    ตัวอย่างผลงาน (Example Work)
+                </h3>
+                <div class="grid grid-cols-2 gap-2.5">
+                    <div class="aspect-square rounded-2xl bg-gradient-to-br from-blue-100 to-sky-50 border border-blue-100 flex flex-col items-center justify-center p-3 text-center">
+                        <span class="text-3xl mb-1">🧸</span>
+                        <p class="text-xs font-medium text-slate-600">Pastel Chibi</p>
+                        <p class="text-[10px] text-melou-muted">Soft Shading</p>
+                    </div>
+                    <div class="aspect-square rounded-2xl bg-gradient-to-br from-sky-100 to-indigo-50 border border-blue-100 flex flex-col items-center justify-center p-3 text-center">
+                        <span class="text-3xl mb-1">🩵</span>
+                        <p class="text-xs font-medium text-slate-600">Bust-up Portrait</p>
+                        <p class="text-[10px] text-melou-muted">Dreamy Eyes</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- VIEW 4: REVIEW & REWARD VIEW (Matches Screenshot 2!)      -->
+        <!-- ========================================================= -->
+        <section id="view-review" class="view-section space-y-4">
+            
+            <!-- Cute Top 2-Tab Switcher with Cat Paws (Matches Screenshot 2) -->
+            <div class="grid grid-cols-2 gap-3 pt-2">
+                <!-- Tab 1: Review -->
+                <button id="tabBtnReview" onclick="switchReviewTab('review')" class="relative overflow-hidden rounded-[22px] py-3 px-3 text-center transition-all shadow-kawaii-sm bg-gradient-to-b from-sky-200/80 to-blue-100/90 border-2 border-white">
+                    <!-- Left & Right Cute Cat Paw Accents -->
+                    <svg class="absolute -bottom-1 left-1.5 w-6 h-8 text-white/90" viewBox="0 0 32 42" fill="currentColor">
+                        <path d="M4 42V16C4 9.4 9.4 4 16 4s12 5.4 12 12v26H4z"/>
+                        <circle cx="16" cy="18" r="3" fill="#93C5FD"/><circle cx="11" cy="13" r="1.8" fill="#93C5FD"/><circle cx="16" cy="11" r="1.8" fill="#93C5FD"/><circle cx="21" cy="13" r="1.8" fill="#93C5FD"/>
+                    </svg>
+                    <svg class="absolute -bottom-1 right-1.5 w-6 h-8 text-white/90" viewBox="0 0 32 42" fill="currentColor">
+                        <path d="M4 42V16C4 9.4 9.4 4 16 4s12 5.4 12 12v26H4z"/>
+                        <circle cx="16" cy="18" r="3" fill="#93C5FD"/><circle cx="11" cy="13" r="1.8" fill="#93C5FD"/><circle cx="16" cy="11" r="1.8" fill="#93C5FD"/><circle cx="21" cy="13" r="1.8" fill="#93C5FD"/>
+                    </svg>
+                    <div class="relative z-10">
+                        <p class="font-display font-semibold text-sm text-slate-700">Review</p>
+                        <p class="text-[10px] text-slate-500">รีวิวจากลูกค้า</p>
+                    </div>
+                </button>
+
+                <!-- Tab 2: Reward -->
+                <button id="tabBtnReward" onclick="switchReviewTab('reward')" class="relative overflow-hidden rounded-[22px] py-3 px-3 text-center transition-all shadow-kawaii-sm bg-white/80 hover:bg-white border-2 border-white opacity-80">
+                    <svg class="absolute -bottom-1 left-1.5 w-6 h-8 text-blue-50" viewBox="0 0 32 42" fill="currentColor">
+                        <path d="M4 42V16C4 9.4 9.4 4 16 4s12 5.4 12 12v26H4z"/>
+                        <circle cx="16" cy="18" r="3" fill="#BFDBFE"/><circle cx="11" cy="13" r="1.8" fill="#BFDBFE"/><circle cx="16" cy="11" r="1.8" fill="#BFDBFE"/><circle cx="21" cy="13" r="1.8" fill="#BFDBFE"/>
+                    </svg>
+                    <svg class="absolute -bottom-1 right-1.5 w-6 h-8 text-blue-50" viewBox="0 0 32 42" fill="currentColor">
+                        <path d="M4 42V16C4 9.4 9.4 4 16 4s12 5.4 12 12v26H4z"/>
+                        <circle cx="16" cy="18" r="3" fill="#BFDBFE"/><circle cx="11" cy="13" r="1.8" fill="#BFDBFE"/><circle cx="16" cy="11" r="1.8" fill="#BFDBFE"/><circle cx="21" cy="13" r="1.8" fill="#BFDBFE"/>
+                    </svg>
+                    <div class="relative z-10">
+                        <p class="font-display font-semibold text-sm text-slate-600">Reward</p>
+                        <p class="text-[10px] text-melou-muted">บัตรสะสมแต้ม</p>
+                    </div>
+                </button>
+            </div>
+
+            <!-- SUB-TAB A: REVIEW PANEL -->
+            <div id="panelReview" class="space-y-4">
+                <!-- Interactive Review Form Card (Matches Screenshot 2's center white box) -->
+                <div class="bg-white rounded-[28px] p-4 shadow-kawaii border border-white space-y-3">
+                    <input id="revNameInput" type="text" placeholder="ชื่อของคุณ" class="w-full rounded-2xl bg-melou-50/70 px-4 py-2.5 text-sm text-slate-700 placeholder-melou-muted focus:outline-none focus:ring-2 focus:ring-melou-300">
+
+                    <!-- Cat Head Rating Selector -->
+                    <div class="text-center py-1">
+                        <p class="text-xs text-slate-500 mb-2">กดที่นี่เพื่อให้คะแนน</p>
+                        <div id="catRatingContainer" class="flex justify-center gap-2">
+                            <!-- 5 Interactive Cat Head Buttons generated/handled by JS -->
+                        </div>
+                    </div>
+
+                    <textarea id="revCommentInput" rows="3" placeholder="เล่าให้ฟังหน่อยว่าเป็นยังไงบ้างคะ" class="w-full rounded-2xl bg-melou-50/70 px-4 py-3 text-sm text-slate-700 placeholder-melou-muted focus:outline-none focus:ring-2 focus:ring-melou-300 resize-none"></textarea>
+
+                    <!-- Bottom Row: Choose Image pill & Submit Review button -->
+                    <div class="flex items-center justify-between gap-2 pt-1">
+                        <label class="cursor-pointer flex items-center gap-2 bg-melou-50/90 hover:bg-melou-100 rounded-full p-1 pr-3 transition-colors flex-1 overflow-hidden">
+                            <span class="bg-sky-200/80 text-slate-700 text-xs font-medium px-3 py-1.5 rounded-full shrink-0">เลือกรูปภาพ</span>
+                            <span id="revFileName" class="text-[11px] text-melou-muted truncate">ไม่ได้เลือกไฟล์</span>
+                            <input type="file" accept="image/*" class="hidden" onchange="handleReviewFile(this)">
+                        </label>
+
+                        <button onclick="submitNewReview()" class="kawaii-btn bg-melou-400 hover:bg-melou-500 text-white text-xs font-display font-medium px-5 py-2.5 rounded-full shadow-kawaii-sm shrink-0">
+                            ส่งรีวิว
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Summary Pills -->
+                <div class="flex flex-col items-center gap-2">
+                    <div class="bg-white px-5 py-1.5 rounded-full shadow-kawaii-sm text-xs text-slate-600 font-medium border border-blue-50">
+                        <span id="avgRatingText" class="font-display font-semibold text-sky-600 text-sm">4.9</span> จาก 5 • <span id="totalReviewsCount">3</span> รีวิว
+                    </div>
+                    <div class="bg-white/80 px-4 py-1 rounded-full text-[11px] text-melou-muted">
+                        ดูรีวิวทั้งหมด
+                    </div>
+                </div>
+
+                <!-- Reviews Feed List (With Blue Cat-Head Rating Tab on top right like screenshot 2!) -->
+                <div id="reviewsListContainer" class="space-y-4 pt-1">
+                    <!-- Populated by JS -->
+                </div>
+            </div>
+
+            <!-- SUB-TAB B: REWARD STAMP CARD PANEL -->
+            <div id="panelReward" class="hidden space-y-4">
+                <div class="bg-white rounded-[28px] p-5 shadow-kawaii border border-white text-center">
+                    <div class="inline-block bg-sky-100 text-sky-600 text-xs font-medium px-3 py-1 rounded-full mb-2">
+                        🎀 Melou Loyalty Card
+                    </div>
+                    <h3 class="font-display font-semibold text-base text-slate-700">บัตรสะสมแต้มลูกค้าประจำ</h3>
+                    <p class="text-xs text-melou-muted mt-0.5">สั่งงานครบทุกๆ 300 บาท รับ 1 แต้มน่ารักๆ</p>
+
+                    <!-- 10-Stamp Grid -->
+                    <div class="grid grid-cols-5 gap-2.5 my-5 p-3.5 rounded-3xl bg-melou-50/80 border border-blue-100/70">
+                        <!-- 4 Collected Stamps -->
+                        <div class="aspect-square rounded-2xl bg-sky-300 text-white flex flex-col items-center justify-center shadow-xs">
+                            <span class="text-lg">🐾</span>
+                            <span class="text-[9px] font-medium">1</span>
+                        </div>
+                        <div class="aspect-square rounded-2xl bg-sky-300 text-white flex flex-col items-center justify-center shadow-xs">
+                            <span class="text-lg">🐾</span>
+                            <span class="text-[9px] font-medium">2</span>
+                        </div>
+                        <div class="aspect-square rounded-2xl bg-sky-300 text-white flex flex-col items-center justify-center shadow-xs">
+                            <span class="text-lg">🐾</span>
+                            <span class="text-[9px] font-medium">3</span>
+                        </div>
+                        <div class="aspect-square rounded-2xl bg-sky-300 text-white flex flex-col items-center justify-center shadow-xs">
+                            <span class="text-lg">🐾</span>
+                            <span class="text-[9px] font-medium">4</span>
+                        </div>
+                        <!-- Milestone 5 -->
+                        <div class="aspect-square rounded-2xl bg-white border-2 border-dashed border-sky-300 text-sky-400 flex flex-col items-center justify-center">
+                            <span class="text-sm">🎁</span>
+                            <span class="text-[9px] font-medium">ลด 10%</span>
+                        </div>
+                        <!-- 6-9 -->
+                        <div class="aspect-square rounded-2xl bg-white border border-blue-100 text-melou-muted flex items-center justify-center text-xs">6</div>
+                        <div class="aspect-square rounded-2xl bg-white border border-blue-100 text-melou-muted flex items-center justify-center text-xs">7</div>
+                        <div class="aspect-square rounded-2xl bg-white border border-blue-100 text-melou-muted flex items-center justify-center text-xs">8</div>
+                        <div class="aspect-square rounded-2xl bg-white border border-blue-100 text-melou-muted flex items-center justify-center text-xs">9</div>
+                        <!-- Milestone 10 -->
+                        <div class="aspect-square rounded-2xl bg-white border-2 border-dashed border-sky-400 text-sky-500 flex flex-col items-center justify-center">
+                            <span class="text-sm">👑</span>
+                            <span class="text-[9px] font-medium">ฟรี Chibi</span>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-slate-600 bg-melou-50 py-2 px-4 rounded-full inline-block">
+                        สะสมแล้ว <span class="font-semibold text-sky-600">4 / 10</span> แต้ม (อีก 1 แต้มรับส่วนลด 10%!)
+                    </p>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- VIEW 5: BRIEF SUBMISSION VIEW (ส่งบรีฟงาน)                 -->
+        <!-- ========================================================= -->
+        <section id="view-brief" class="view-section space-y-4">
+            <div class="bg-white rounded-[28px] p-5 shadow-kawaii border border-white space-y-3.5">
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="w-8 h-8 rounded-full bg-blue-100 text-melou-500 flex items-center justify-center text-base">☁️</span>
+                    <div>
+                        <h2 class="font-display font-semibold text-base text-slate-700">ฟอร์มส่งบรีฟงาน</h2>
+                        <p class="text-[11px] text-melou-muted">กรอกรายละเอียดแล้วกดคัดลอกส่งให้ร้านทางแชทได้เลยค่ะ</p>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">ชื่อลูกค้า / ช่องทางติดต่อ (Line / X / IG)</label>
+                    <input id="briefClient" type="text" placeholder="เช่น คุณเมล / @melou_fan" class="w-full rounded-2xl bg-melou-50/80 border border-blue-100 px-3.5 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-melou-300">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">ประเภทงานที่ต้องการสั่ง</label>
+                    <select id="briefWorkType" class="w-full rounded-2xl bg-melou-50/80 border border-blue-100 px-3.5 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-melou-300">
+                        <option value="Chibi (จิบิเต็มตัว)">Chibi (จิบิเต็มตัว)</option>
+                        <option value="Bust-up (อกขึ้นไป)">Bust-up (อกขึ้นไป)</option>
+                        <option value="Half-body (ครึ่งตัว)">Half-body (ครึ่งตัว)</option>
+                        <option value="Full-body (เต็มตัว)">Full-body (เต็มตัว)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-medium text-slate-600 mb-1">รายละเอียดตัวละคร / ท่าทาง / โทนสี</label>
+                    <textarea id="briefDetails" rows="4" placeholder="ระบุลักษณะตัวละคร สีผม สีตา ชุด ท่าทาง หรือลิงก์เรฟเฟอเรนซ์..." class="w-full rounded-2xl bg-melou-50/80 border border-blue-100 px-3.5 py-2.5 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-melou-300 resize-none"></textarea>
+                </div>
+
+                <div class="pt-1 space-y-2">
+                    <button onclick="copyBriefText()" class="w-full py-3 rounded-full bg-melou-400 hover:bg-melou-500 text-white font-display font-medium text-sm shadow-kawaii-sm kawaii-btn flex items-center justify-center gap-2">
+                        <span>📋 คัดลอกบรีฟงาน</span>
+                    </button>
+                    <button onclick="navigateTo('contact')" class="w-full py-2.5 rounded-full bg-melou-50 hover:bg-melou-100 text-melou-500 font-medium text-xs transition-colors">
+                        ไปที่ช่องทางติดต่อเพื่อส่งบรีฟ →
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- VIEW 6: CONTACT VIEW (ช่องทางติดต่อ)                        -->
+        <!-- ========================================================= -->
+        <section id="view-contact" class="view-section space-y-3.5">
+            <div class="bg-white rounded-[28px] p-5 shadow-kawaii border border-white text-center mb-2">
+                <span class="text-3xl">💌</span>
+                <h2 class="font-display font-semibold text-base text-slate-700 mt-1">ติดต่อร้าน Melou</h2>
+                <p class="text-xs text-melou-muted">ทักสอบถามคิวงานหรือส่งบรีฟได้ทุกช่องทางเลยนะคะ</p>
+            </div>
+
+            <!-- Social Contact Pills -->
+            <div class="bg-white rounded-[24px] p-3.5 shadow-kawaii border border-white flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-sky-100 text-sky-500 flex items-center justify-center font-bold text-lg">𝕏</div>
+                    <div>
+                        <p class="font-display font-medium text-sm text-slate-700">X (Twitter)</p>
+                        <p class="text-xs text-melou-muted">@melou_art</p>
+                    </div>
+                </div>
+                <button onclick="copyText('@melou_art', 'คัดลอกไอดี X เรียบร้อย!')" class="kawaii-btn bg-melou-50 hover:bg-melou-100 text-melou-500 text-xs font-medium px-3.5 py-2 rounded-full">
+                    คัดลอก ID
+                </button>
+            </div>
+
+            <div class="bg-white rounded-[24px] p-3.5 shadow-kawaii border border-white flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-pink-50 text-pink-400 flex items-center justify-center text-lg">📸</div>
+                    <div>
+                        <p class="font-display font-medium text-sm text-slate-700">Instagram</p>
+                        <p class="text-xs text-melou-muted">@melou.studio</p>
+                    </div>
+                </div>
+                <button onclick="copyText('@melou.studio', 'คัดลอกไอดี IG เรียบร้อย!')" class="kawaii-btn bg-melou-50 hover:bg-melou-100 text-melou-500 text-xs font-medium px-3.5 py-2 rounded-full">
+                    คัดลอก ID
+                </button>
+            </div>
+
+            <div class="bg-white rounded-[24px] p-3.5 shadow-kawaii border border-white flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-emerald-50 text-emerald-500 flex items-center justify-center text-lg">💬</div>
+                    <div>
+                        <p class="font-display font-medium text-sm text-slate-700">LINE Official</p>
+                        <p class="text-xs text-melou-muted">@melou.shop</p>
+                    </div>
+                </div>
+                <button onclick="copyText('@melou.shop', 'คัดลอก LINE ID เรียบร้อย!')" class="kawaii-btn bg-melou-50 hover:bg-melou-100 text-melou-500 text-xs font-medium px-3.5 py-2 rounded-full">
+                    คัดลอก ID
+                </button>
+            </div>
+
+            <div class="bg-white rounded-[24px] p-3.5 shadow-kawaii border border-white flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <div class="w-11 h-11 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center text-lg">📘</div>
+                    <div>
+                        <p class="font-display font-medium text-sm text-slate-700">Facebook Page</p>
+                        <p class="text-xs text-melou-muted">Melou Commission</p>
+                    </div>
+                </div>
+                <button onclick="copyText('Melou Commission', 'คัดลอกชื่อเพจเรียบร้อย!')" class="kawaii-btn bg-melou-50 hover:bg-melou-100 text-melou-500 text-xs font-medium px-3.5 py-2 rounded-full">
+                    คัดลอกชื่อ
+                </button>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="mt-8 text-center text-[11px] text-melou-muted">
+            <p>© 2026 Melou Studio • Made with 🩵 & ☁️</p>
+        </footer>
+
+    </main>
+
+    <!-- ========================================================= -->
+    <!-- SLIDE-OVER MENU DRAWER (Hamburger Menu Modal)             -->
+    <!-- ========================================================= -->
+    <div id="navDrawer" class="fixed inset-0 z-50 hidden">
+        <div onclick="toggleDrawer(false)" class="absolute inset-0 bg-slate-900/20 backdrop-blur-xs transition-opacity"></div>
+        <div class="relative ml-auto w-72 max-w-[80vw] h-full bg-white/95 backdrop-blur-md shadow-2xl p-5 flex flex-col justify-between rounded-l-[32px]">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-blue-50">
+                    <span class="font-display font-semibold text-base text-slate-700 italic">MELOU MENU ☁️</span>
+                    <button onclick="toggleDrawer(false)" class="w-8 h-8 rounded-full bg-melou-50 text-melou-500 flex items-center justify-center">✕</button>
+                </div>
+                <nav class="mt-4 space-y-2 text-sm">
+                    <button onclick="navigateTo('home'); toggleDrawer(false)" class="w-full text-left px-4 py-3 rounded-2xl hover:bg-melou-50 text-slate-700 font-medium flex items-center gap-3">🏠 หน้าหลัก (Home)</button>
+                    <button onclick="navigateTo('price'); toggleDrawer(false)" class="w-full text-left px-4 py-3 rounded-2xl hover:bg-melou-50 text-slate-700 font-medium flex items-center gap-3">🏷️ ราคางาน & คำนวณ</button>
+                    <button onclick="navigateTo('queue'); toggleDrawer(false)" class="w-full text-left px-4 py-3 rounded-2xl hover:bg-melou-50 text-slate-700 font-medium flex items-center gap-3">☁️ เช็กคิวงาน</button>
+                    <button onclick="navigateTo('review'); toggleDrawer(false)" class="w-full text-left px-4 py-3 rounded-2xl hover:bg-melou-50 text-slate-700 font-medium flex items-center gap-3">🐾 รีวิว & สะสมแต้ม</button>
+                    <button onclick="navigateTo('brief'); toggleDrawer(false)" class="w-full text-left px-4 py-3 rounded-2xl hover:bg-melou-50 text-slate-700 font-medium flex items-center gap-3">📝 ส่งบรีฟงาน</button>
+                    <button onclick="navigateTo('contact'); toggleDrawer(false)" class="w-full text-left px-4 py-3 rounded-2xl hover:bg-melou-50 text-slate-700 font-medium flex items-center gap-3">💌 ช่องทางติดต่อ</button>
+                    <button onclick="toggleDrawer(false); openTosModal()" class="w-full text-left px-4 py-3 rounded-2xl hover:bg-melou-50 text-sky-600 font-medium flex items-center gap-3">🎀 เงื่อนไขการสั่งงาน (TOS)</button>
+                </nav>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-melou-50 text-center text-xs text-melou-muted">
+                ขอบคุณที่แวะมาเยี่ยมชมร้าน Melou นะคะ 🩵
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- TOS MODAL (Terms of Service Popup)                        -->
+    <!-- ========================================================= -->
+    <div id="tosModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div onclick="closeTosModal()" class="absolute inset-0 bg-slate-900/25 backdrop-blur-xs"></div>
+        <div class="relative z-10 w-full max-w-[380px] bg-white rounded-[30px] p-6 shadow-2xl border-2 border-blue-50 space-y-3">
+            <div class="text-center">
+                <span class="inline-block bg-sky-100 text-sky-600 text-xs font-medium px-3 py-1 rounded-full mb-1">🎀 Terms of Service</span>
+                <h3 class="font-display font-semibold text-lg text-slate-700">เงื่อนไขการสั่งงาน Melou</h3>
+            </div>
+            <ul class="text-xs text-slate-600 space-y-2 bg-melou-50/70 p-4 rounded-2xl leading-relaxed">
+                <li>🩵 <b>ระยะเวลาทำงาน:</b> 3 - 7 วันหลังโอนมัดจำหรือชำระเต็มจำนวน</li>
+                <li>🩵 <b>การแก้งาน:</b> แก้ไขช่วงร่างภาพได้ฟรี 3 ครั้ง (ลงสีแล้วปรับสีเล็กน้อยได้ 1 ครั้ง)</li>
+                <li>🩵 <b>การใช้งาน:</b> ราคาปกติสำหรับใช้ส่วนตัว / ตั้งโปรไฟล์ (เชิงพาณิชย์ +300 บาท)</li>
+                <li>🩵 <b>ไฟล์ที่จะได้รับ:</b> ไฟล์ PNG ความละเอียดสูง (พื้นหลังปกติ + พื้นหลังโปร่งใส)</li>
+            </ul>
+            <button onclick="closeTosModal()" class="w-full py-2.5 rounded-full bg-melou-400 hover:bg-melou-500 text-white font-display font-medium text-sm shadow-kawaii-sm kawaii-btn">
+                รับทราบค่ะ ✨
+            </button>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- CUSTOM MUSIC MODAL (Upload MP3 or Paste Audio/YT Link)    -->
+    <!-- ========================================================= -->
+    <div id="customMusicModal" class="fixed inset-0 z-50 hidden flex items-center justify-center p-4">
+        <div onclick="toggleCustomMusicModal()" class="absolute inset-0 bg-slate-900/25 backdrop-blur-xs"></div>
+        <div class="relative z-10 w-full max-w-[380px] bg-white rounded-[30px] p-5 shadow-2xl border-2 border-blue-50 space-y-3.5">
+            <div class="flex items-center justify-between">
+                <h3 class="font-display font-semibold text-base text-slate-700 flex items-center gap-1.5">
+                    <span>🎵</span> เลือกเพลงโปรดของคุณ
+                </h3>
+                <button onclick="toggleCustomMusicModal()" class="w-7 h-7 rounded-full bg-melou-50 text-melou-500 flex items-center justify-center text-xs">✕</button>
+            </div>
+
+            <!-- Option 1: Upload local MP3/Audio file -->
+            <div class="p-3 rounded-2xl bg-melou-50/70 border border-blue-100/70 space-y-2">
+                <p class="text-xs font-medium text-slate-700">1. อัปโหลดไฟล์เพลงจากเครื่อง (.mp3 / .wav)</p>
+                <label class="cursor-pointer flex items-center justify-center gap-2 w-full py-2 px-3 rounded-full bg-white hover:bg-sky-50 text-sky-600 border border-sky-200 text-xs font-medium transition-colors">
+                    <span>📂 เลือกไฟล์เพลงในเครื่อง</span>
+                    <input type="file" accept="audio/*" class="hidden" onchange="loadLocalAudioFile(this)">
+                </label>
+            </div>
+
+            <!-- Option 2: Paste Audio URL or YouTube/Spotify Embed -->
+            <div class="p-3 rounded-2xl bg-melou-50/70 border border-blue-100/70 space-y-2">
+                <p class="text-xs font-medium text-slate-700">2. หรือวางลิงก์เพลง (YouTube / ลิงก์ไฟล์เสียง .mp3)</p>
+                <input id="customMusicUrlInput" type="url" placeholder="https://www.youtube.com/watch?v=..." class="w-full rounded-full bg-white border border-blue-100 px-3.5 py-2 text-xs text-slate-700 focus:outline-none focus:ring-2 focus:ring-melou-300">
+                <button onclick="applyCustomMusicUrl()" class="w-full py-2 rounded-full bg-melou-400 hover:bg-melou-500 text-white font-display font-medium text-xs shadow-kawaii-sm kawaii-btn">
+                    เปิดเล่นลิงก์นี้ ✨
+                </button>
+            </div>
+
+            <!-- Embedded Mini YouTube/External Player Container (Hidden unless YouTube URL used) -->
+            <div id="externalEmbedWrapper" class="hidden rounded-2xl overflow-hidden border border-blue-100 bg-black aspect-video">
+                <iframe id="externalEmbedFrame" class="w-full h-full" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- CUSTOM KAWAII TOAST NOTIFICATION (Replaces alert())       -->
+    <!-- ========================================================= -->
+    <div id="kawaiiToast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 transition-all duration-300 transform translate-y-3">
+        <div class="bg-slate-800/90 backdrop-blur-md text-white text-xs font-medium px-4 py-2.5 rounded-full shadow-lg flex items-center gap-2">
+            <span>🩵</span>
+            <span id="kawaiiToastMsg">ดำเนินการเรียบร้อย!</span>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- JAVASCRIPT LOGIC                                          -->
+    <!-- ========================================================= -->
+    <script>
+        // --- 1. SPA Navigation & Header State ---
+        const pageSubtitles = {
+            home: 'Art & Commission Studio',
+            price: 'ราคางาน & คำนวณราคา',
+            queue: 'เช็กคิวงาน & ตัวอย่างงาน',
+            review: 'รีวิวจากลูกค้า & สะสมแต้ม',
+            brief: 'ส่งบรีฟรายละเอียดงาน',
+            contact: 'ช่องทางติดต่อร้าน'
+        };
+
+        function navigateTo(viewName) {
+            // Hide all views
+            document.querySelectorAll('.view-section').forEach(el => {
+                el.classList.remove('active');
+            });
+
+            // Show target view
+            const target = document.getElementById(`view-${viewName}`);
+            if (target) {
+                target.classList.add('active');
+            }
+
+            // Update header subtitle & back button visibility
+            const backBtn = document.getElementById('headerBackBtn');
+            const subtitle = document.getElementById('headerSubtitle');
+            subtitle.textContent = pageSubtitles[viewName] || 'Art & Commission Studio';
+
+            if (viewName === 'home') {
+                backBtn.classList.add('hidden');
+            } else {
+                backBtn.classList.remove('hidden');
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // --- 2. Drawer & TOS Modal Controls ---
+        function toggleDrawer(open) {
+            const drawer = document.getElementById('navDrawer');
+            if (open) {
+                drawer.classList.remove('hidden');
+            } else {
+                drawer.classList.add('hidden');
+            }
+        }
+
+        function openTosModal() {
+            document.getElementById('tosModal').classList.remove('hidden');
+        }
+
+        function closeTosModal() {
+            document.getElementById('tosModal').classList.add('hidden');
+        }
+
+        // --- 3. Custom Toast Notification ---
+        let toastTimeout;
+        function showToast(message) {
+            const toast = document.getElementById('kawaiiToast');
+            const msgEl = document.getElementById('kawaiiToastMsg');
+            msgEl.textContent = message;
+
+            toast.classList.remove('opacity-0', 'translate-y-3');
+            toast.classList.add('opacity-100', 'translate-y-0');
+
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.remove('opacity-100', 'translate-y-0');
+                toast.classList.add('opacity-0', 'translate-y-3');
+            }, 2500);
+        }
+
+        // --- 4. Clipboard Helper (using execCommand for iframe compatibility) ---
+        function copyText(text, successMessage) {
+            const tempInput = document.createElement('textarea');
+            tempInput.value = text;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            try {
+                document.execCommand('copy');
+                showToast(successMessage || 'คัดลอกเรียบร้อยแล้วค่ะ!');
+            } catch (err) {
+                showToast('ไม่สามารถคัดลอกได้ กรุณาลองใหม่อีกครั้ง');
+            }
+            document.body.removeChild(tempInput);
+        }
+
+        // --- 5. Interactive Mini Price Calculator ---
+        function calculatePrice() {
+            const basePrice = parseFloat(document.getElementById('calcType').value) || 0;
+            const charMultiplier = parseFloat(document.getElementById('calcChars').value) || 1;
+            const extraCost = parseFloat(document.getElementById('calcExtra').value) || 0;
+
+            const total = Math.round((basePrice * charMultiplier) + extraCost);
+            document.getElementById('calcTotalDisplay').textContent = total.toLocaleString();
+        }
+
+        // --- 6. Brief Form Copy ---
+        function copyBriefText() {
+            const client = document.getElementById('briefClient').value.trim() || '(ไม่ได้ระบุ)';
+            const workType = document.getElementById('briefWorkType').value;
+            const details = document.getElementById('briefDetails').value.trim() || '(ไม่ได้ระบุรายละเอียด)';
+
+            const formattedBrief = `☁️ บรีฟสั่งงานร้าน Melou ☁️\n• ชื่อ/ช่องทางติดต่อ: ${client}\n• ประเภทงาน: ${workType}\n• รายละเอียดงาน: ${details}`;
+            copyText(formattedBrief, 'คัดลอกบรีฟงานเรียบร้อย! ส่งในแชทได้เลยค่ะ 🩵');
+        }
+
+        // --- 7. Review & Cat-Head Rating System (Matches Screenshot 2) ---
+        let selectedCatRating = 5;
+        let selectedReviewFileName = '';
+
+        // Initial Sample Reviews
+        let reviewsData = [
+            {
+                name: 'คุณมิ้นท์',
+                comment: 'งานน่ารักมากกกกก ลงสีละมุนสุดๆ ส่งงานไวกว่าที่คิดไว้ด้วยค่ะ ไว้มาอุดหนุนอีกแน่นอน 🩵',
+                rating: 5
+            },
+            {
+                name: 'NongPloy',
+                comment: 'วาดตรงบรีฟเป๊ะเลยค่ะ แม่ค้าใจดีมากๆ คอยอัปเดตงานตลอด ประทับใจสุดๆ',
+                rating: 5
+            },
+            {
+                name: 'Kana_09',
+                comment: 'ลายเส้นน่ารักนุ้บนิ้บมากค่ะ เอาไปตั้งโปรไฟล์เพื่อนทักเพียบเลย',
+                rating: 4
+            }
+        ];
+
+        // Helper SVG for Cute Cat Head Icon
+        function getCatHeadSVG(isActive, sizeClass = 'w-7 h-7') {
+            const fill = isActive ? '#ffffff' : '#f1f5f9';
+            const stroke = isActive ? '#7ab8ff' : '#cbd5e1';
+            const faceColor = isActive ? '#60a5fa' : '#94a3b8';
+            return `
+                <svg class="${sizeClass} transition-transform" viewBox="0 0 36 32" fill="none">
+                    <path d="M5 12L4 3L12 8C14 7.3 16 7 18 7C20 7 22 7.3 24 8L32 3L31 12C33 14.5 34 17.5 34 20.5C34 26.8 26.8 30 18 30C9.2 30 2 26.8 2 20.5C2 17.5 3 14.5 5 12Z" fill="${fill}" stroke="${stroke}" stroke-width="2" stroke-linejoin="round"/>
+                    <circle cx="13" cy="18" r="1.5" fill="${faceColor}"/>
+                    <circle cx="23" cy="18" r="1.5" fill="${faceColor}"/>
+                    <path d="M16.5 21.5Q18 23 19.5 21.5" stroke="${faceColor}" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+            `;
+        }
+
+        function renderCatRatingSelector() {
+            const container = document.getElementById('catRatingContainer');
+            container.innerHTML = '';
+            for (let i = 1; i <= 5; i++) {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'kawaii-btn focus:outline-none p-0.5';
+                btn.innerHTML = getCatHeadSVG(i <= selectedCatRating, 'w-8 h-7');
+                btn.onclick = () => {
+                    selectedCatRating = i;
+                    renderCatRatingSelector();
+                };
+                container.appendChild(btn);
+            }
+        }
+
+        function handleReviewFile(input) {
+            const label = document.getElementById('revFileName');
+            if (input.files && input.files[0]) {
+                selectedReviewFileName = input.files[0].name;
+                label.textContent = selectedReviewFileName;
+            } else {
+                selectedReviewFileName = '';
+                label.textContent = 'ไม่ได้เลือกไฟล์';
+            }
+        }
+
+        function renderReviewsList() {
+            const container = document.getElementById('reviewsListContainer');
+            container.innerHTML = '';
+
+            // Update average & count
+            const total = reviewsData.length;
+            const sum = reviewsData.reduce((acc, item) => acc + item.rating, 0);
+            const avg = total > 0 ? (sum / total).toFixed(1) : '5.0';
+            document.getElementById('avgRatingText').textContent = avg;
+            document.getElementById('totalReviewsCount').textContent = total;
+
+            reviewsData.forEach(rev => {
+                // Build 5 small cat icons for top-right blue pill tab (exact match to screenshot 2)
+                let catBadgesHTML = '';
+                for (let i = 1; i <= 5; i++) {
+                    const active = i <= rev.rating;
+                    catBadgesHTML += `
+                        <svg class="w-4 h-3.5" viewBox="0 0 36 32" fill="none">
+                            <path d="M5 12L4 3L12 8C14 7.3 16 7 18 7C20 7 22 7.3 24 8L32 3L31 12C33 14.5 34 17.5 34 20.5C34 26.8 26.8 30 18 30C9.2 30 2 26.8 2 20.5C2 17.5 3 14.5 5 12Z" fill="${active ? '#ffffff' : '#bae6fd'}"/>
+                            <circle cx="13" cy="18" r="1.8" fill="${active ? '#60a5fa' : '#7dd3fc'}"/>
+                            <circle cx="23" cy="18" r="1.8" fill="${active ? '#60a5fa' : '#7dd3fc'}"/>
+                        </svg>
+                    `;
+                }
+
+                const card = document.createElement('div');
+                card.className = 'relative pt-4';
+                card.innerHTML = `
+                    <!-- Top-Right Blue Cat Rating Tab (Matches Screenshot 2) -->
+                    <div class="absolute top-0 right-4 bg-sky-300/90 px-2.5 py-1 rounded-t-xl flex items-center gap-0.5 shadow-xs">
+                        ${catBadgesHTML}
+                    </div>
+                    <!-- Main White Review Card -->
+                    <div class="bg-white rounded-[24px] p-4 shadow-kawaii border border-white">
+                        <div class="bg-melou-50/40 rounded-2xl p-3">
+                            <p class="font-display font-medium text-sm text-slate-700">${escapeHTML(rev.name)}</p>
+                            <p class="text-xs text-slate-500 mt-1 leading-relaxed">${escapeHTML(rev.comment)}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function submitNewReview() {
+            const nameInput = document.getElementById('revNameInput');
+            const commentInput = document.getElementById('revCommentInput');
+
+            const name = nameInput.value.trim() || 'ลูกค้าผู้น่ารัก';
+            const comment = commentInput.value.trim();
+
+            if (!comment) {
+                showToast('รบกวนพิมพ์ข้อความรีวิวสักนิดนะคะ 🩵');
+                return;
+            }
+
+            reviewsData.unshift({
+                name: name,
+                comment: comment,
+                rating: selectedCatRating
+            });
+
+            // Reset inputs
+            nameInput.value = '';
+            commentInput.value = '';
+            selectedCatRating = 5;
+            document.getElementById('revFileName').textContent = 'ไม่ได้เลือกไฟล์';
+
+            renderCatRatingSelector();
+            renderReviewsList();
+            showToast('ขอบคุณสำหรับรีวิวน่ารักๆ นะคะ! 🐾');
+        }
+
+        function switchReviewTab(tab) {
+            const btnReview = document.getElementById('tabBtnReview');
+            const btnReward = document.getElementById('tabBtnReward');
+            const panelReview = document.getElementById('panelReview');
+            const panelReward = document.getElementById('panelReward');
+
+            if (tab === 'review') {
+                btnReview.className = 'relative overflow-hidden rounded-[22px] py-3 px-3 text-center transition-all shadow-kawaii-sm bg-gradient-to-b from-sky-200/80 to-blue-100/90 border-2 border-white';
+                btnReward.className = 'relative overflow-hidden rounded-[22px] py-3 px-3 text-center transition-all shadow-kawaii-sm bg-white/80 hover:bg-white border-2 border-white opacity-80';
+                panelReview.classList.remove('hidden');
+                panelReward.classList.add('hidden');
+            } else {
+                btnReward.className = 'relative overflow-hidden rounded-[22px] py-3 px-3 text-center transition-all shadow-kawaii-sm bg-gradient-to-b from-sky-200/80 to-blue-100/90 border-2 border-white';
+                btnReview.className = 'relative overflow-hidden rounded-[22px] py-3 px-3 text-center transition-all shadow-kawaii-sm bg-white/80 hover:bg-white border-2 border-white opacity-80';
+                panelReward.classList.remove('hidden');
+                panelReview.classList.add('hidden');
+            }
+        }
+
+        function escapeHTML(str) {
+            return str.replace(/[&<>'"]/g, tag => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                "'": '&#39;',
+                '"': '&quot;'
+            }[tag]));
+        }
+
+        // --- 8. Cute Pastel BGM Music Player (Web Audio Synth + Custom MP3/Link) ---
+        const builtInTracks = [
+            {
+                title: '☁️ Cloud Music Box',
+                subtitle: 'Melou BGM • กล่องดนตรีกล่อมฝัน',
+                tempo: 112,
+                type: 'musicbox',
+                // Cmaj7 - Am7 - Fmaj7 - G6 cute music box notes (Hz)
+                notes: [
+                    523.25, 659.25, 783.99, 987.77, 783.99, 659.25,
+                    440.00, 523.25, 659.25, 783.99, 659.25, 523.25,
+                    349.23, 440.00, 523.25, 659.25, 523.25, 440.00,
+                    392.00, 493.88, 587.33, 659.25, 587.33, 493.88
+                ]
+            },
+            {
+                title: '🧸 Cozy Lo-Fi Chill',
+                subtitle: 'Melou BGM • จังหวะชิลๆ ระหว่างวาดรูป',
+                tempo: 86,
+                type: 'lofi',
+                notes: [
+                    329.63, 392.00, 493.88, 587.33,
+                    293.66, 349.23, 440.00, 523.25,
+                    261.63, 329.63, 392.00, 493.88,
+                    293.66, 392.00, 493.88, 587.33
+                ]
+            },
+            {
+                title: '🎀 Pastel Pop Sparkle',
+                subtitle: 'Melou BGM • ป๊อปพาสเทลสดใสน่ารัก',
+                tempo: 126,
+                type: 'pop',
+                notes: [
+                    523.25, 587.33, 659.25, 783.99, 880.00, 783.99, 659.25, 587.33,
+                    698.46, 659.25, 587.33, 523.25, 587.33, 659.25, 783.99, 659.25
+                ]
+            }
+        ];
+
+        let currentTrackIdx = 0;
+        let isBgmPlaying = false;
+        let isCustomAudioMode = false;
+        let audioCtx = null;
+        let masterGain = null;
+        let synthInterval = null;
+        let progressInterval = null;
+        let noteStep = 0;
+        let elapsedSeconds = 0;
+        let isMuted = false;
+        let currentVolume = 0.65;
+
+        function initAudioContext() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContextClass();
+                masterGain = audioCtx.createGain();
+                masterGain.gain.value = isMuted ? 0 : currentVolume * 0.35;
+                masterGain.connect(audioCtx.destination);
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function playSynthNote(freq, style) {
+            if (!audioCtx || isMuted) return;
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const noteGain = audioCtx.createGain();
+
+            if (style === 'musicbox') {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, now);
+                noteGain.gain.setValueAtTime(0.001, now);
+                noteGain.gain.exponentialRampToValueAtTime(0.45, now + 0.02);
+                noteGain.gain.exponentialRampToValueAtTime(0.0008, now + 1.1);
+                osc.connect(noteGain);
+                noteGain.connect(masterGain);
+                osc.start(now);
+                osc.stop(now + 1.15);
+            } else if (style === 'lofi') {
+                osc.type = 'triangle';
+                osc.frequency.setValueAtTime(freq, now);
+                noteGain.gain.setValueAtTime(0.001, now);
+                noteGain.gain.linearRampToValueAtTime(0.32, now + 0.08);
+                noteGain.gain.exponentialRampToValueAtTime(0.001, now + 1.4);
+                osc.connect(noteGain);
+                noteGain.connect(masterGain);
+                osc.start(now);
+                osc.stop(now + 1.45);
+            } else {
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(freq, now);
+                noteGain.gain.setValueAtTime(0.001, now);
+                noteGain.gain.exponentialRampToValueAtTime(0.35, now + 0.015);
+                noteGain.gain.exponentialRampToValueAtTime(0.001, now + 0.55);
+                osc.connect(noteGain);
+                noteGain.connect(masterGain);
+                osc.start(now);
+                osc.stop(now + 0.6);
+            }
+        }
+
+        function startBuiltInSynth() {
+            stopAllPlayback(false);
+            initAudioContext();
+            const track = builtInTracks[currentTrackIdx];
+            const stepMs = Math.round((60 / track.tempo) * 1000 * 0.65);
+
+            playSynthNote(track.notes[noteStep % track.notes.length], track.type);
+            noteStep++;
+
+            synthInterval = setInterval(() => {
+                playSynthNote(track.notes[noteStep % track.notes.length], track.type);
+                noteStep++;
+            }, stepMs);
+
+            progressInterval = setInterval(() => {
+                elapsedSeconds++;
+                const loopDuration = 60; // 1-minute seamless loop indicator
+                const pct = ((elapsedSeconds % loopDuration) / loopDuration) * 100;
+                document.getElementById('bgmProgressBar').style.width = `${pct}%`;
+                document.getElementById('bgmTimeText').textContent = formatTime(elapsedSeconds);
+            }, 1000);
+        }
+
+        function stopAllPlayback(resetTime = false) {
+            clearInterval(synthInterval);
+            clearInterval(progressInterval);
+            synthInterval = null;
+            progressInterval = null;
+
+            const customAudio = document.getElementById('customAudioPlayer');
+            if (!customAudio.paused) {
+                customAudio.pause();
+            }
+
+            if (resetTime) {
+                elapsedSeconds = 0;
+                noteStep = 0;
+                document.getElementById('bgmProgressBar').style.width = '0%';
+                document.getElementById('bgmTimeText').textContent = '0:00';
+            }
+        }
+
+        function updatePlayerVisualState(playing) {
+            isBgmPlaying = playing;
+            const vinyl = document.getElementById('vinylDisc');
+            const iconPlay = document.getElementById('iconPlay');
+            const iconPause = document.getElementById('iconPause');
+            const note1 = document.getElementById('floatingNote1');
+            const note2 = document.getElementById('floatingNote2');
+
+            if (playing) {
+                vinyl.classList.remove('vinyl-paused');
+                vinyl.classList.add('vinyl-spinning');
+                iconPlay.classList.add('hidden');
+                iconPause.classList.remove('hidden');
+                note1.classList.remove('hidden');
+                note2.classList.remove('hidden');
+            } else {
+                vinyl.classList.remove('vinyl-spinning');
+                vinyl.classList.add('vinyl-paused');
+                iconPlay.classList.remove('hidden');
+                iconPause.classList.add('hidden');
+                note1.classList.add('hidden');
+                note2.classList.add('hidden');
+            }
+        }
+
+        function togglePlayBgm() {
+            const customAudio = document.getElementById('customAudioPlayer');
+            if (isBgmPlaying) {
+                stopAllPlayback(false);
+                updatePlayerVisualState(false);
+            } else {
+                if (isCustomAudioMode && customAudio.src) {
+                    customAudio.play().then(() => {
+                        updatePlayerVisualState(true);
+                    }).catch(() => {
+                        showToast('ไม่สามารถเล่นไฟล์เสียงนี้ได้ กรุณาลองใหม่ค่ะ');
+                    });
+                } else {
+                    isCustomAudioMode = false;
+                    startBuiltInSynth();
+                    updatePlayerVisualState(true);
+                }
+            }
+        }
+
+        function selectBuiltInTrack(idx) {
+            currentTrackIdx = idx;
+            isCustomAudioMode = false;
+            const track = builtInTracks[idx];
+
+            document.getElementById('bgmTrackTitle').textContent = track.title;
+            document.getElementById('bgmTrackSub').textContent = track.subtitle;
+
+            // Highlight active pill
+            document.querySelectorAll('.track-pill').forEach(btn => {
+                if (parseInt(btn.dataset.track) === idx) {
+                    btn.className = 'track-pill active text-[10px] px-2 py-0.5 rounded-full bg-sky-100 text-sky-600 font-medium transition-colors shrink-0';
+                } else {
+                    btn.className = 'track-pill text-[10px] px-2 py-0.5 rounded-full bg-melou-50 text-melou-muted hover:bg-melou-100 transition-colors shrink-0';
+                }
+            });
+
+            stopAllPlayback(true);
+            startBuiltInSynth();
+            updatePlayerVisualState(true);
+        }
+
+        function prevTrack() {
+            const nextIdx = (currentTrackIdx - 1 + builtInTracks.length) % builtInTracks.length;
+            selectBuiltInTrack(nextIdx);
+        }
+
+        function nextTrack() {
+            const nextIdx = (currentTrackIdx + 1) % builtInTracks.length;
+            selectBuiltInTrack(nextIdx);
+        }
+
+        function changeBgmVolume(val) {
+            currentVolume = val / 100;
+            isMuted = currentVolume === 0;
+            document.getElementById('bgmMuteBtn').textContent = isMuted ? '🔇' : '🔊';
+
+            if (masterGain && audioCtx) {
+                masterGain.gain.setTargetAtTime(isMuted ? 0 : currentVolume * 0.35, audioCtx.currentTime, 0.05);
+            }
+            const customAudio = document.getElementById('customAudioPlayer');
+            customAudio.volume = currentVolume;
+        }
+
+        function toggleMuteBgm() {
+            isMuted = !isMuted;
+            document.getElementById('bgmMuteBtn').textContent = isMuted ? '🔇' : '🔊';
+            if (masterGain && audioCtx) {
+                masterGain.gain.setTargetAtTime(isMuted ? 0 : currentVolume * 0.35, audioCtx.currentTime, 0.05);
+            }
+            const customAudio = document.getElementById('customAudioPlayer');
+            customAudio.muted = isMuted;
+        }
+
+        function seekBgm(event) {
+            const customAudio = document.getElementById('customAudioPlayer');
+            if (!isCustomAudioMode || !customAudio.duration) return;
+            const rect = event.currentTarget.getBoundingClientRect();
+            const clickX = event.clientX - rect.left;
+            const ratio = Math.max(0, Math.min(1, clickX / rect.width));
+            customAudio.currentTime = ratio * customAudio.duration;
+        }
+
+        function formatTime(sec) {
+            const s = Math.floor(sec || 0);
+            const mins = Math.floor(s / 60);
+            const secs = s % 60;
+            return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+        }
+
+        // Custom Music Modal & Local File / URL Handlers
+        function toggleCustomMusicModal() {
+            document.getElementById('customMusicModal').classList.toggle('hidden');
+        }
+
+        function loadLocalAudioFile(input) {
+            const file = input.files && input.files[0];
+            if (!file) return;
+
+            stopAllPlayback(true);
+            isCustomAudioMode = true;
+
+            const objectUrl = URL.createObjectURL(file);
+            const customAudio = document.getElementById('customAudioPlayer');
+            customAudio.src = objectUrl;
+            customAudio.volume = currentVolume;
+            customAudio.loop = true;
+
+            document.getElementById('bgmTrackTitle').textContent = `🎵 ${file.name}`;
+            document.getElementById('bgmTrackSub').textContent = 'Custom Audio • เพลงจากเครื่องของคุณ';
+            document.querySelectorAll('.track-pill').forEach(btn => {
+                btn.className = 'track-pill text-[10px] px-2 py-0.5 rounded-full bg-melou-50 text-melou-muted hover:bg-melou-100 transition-colors shrink-0';
+            });
+
+            customAudio.play().then(() => {
+                updatePlayerVisualState(true);
+                toggleCustomMusicModal();
+                showToast('เล่นเพลงของคุณเรียบร้อยค่ะ 🎶');
+            }).catch(() => {
+                showToast('ไม่สามารถเล่นไฟล์นี้ได้ กรุณาลองไฟล์ .mp3 อื่นนะคะ');
+            });
+        }
+
+        function applyCustomMusicUrl() {
+            const url = document.getElementById('customMusicUrlInput').value.trim();
+            if (!url) {
+                showToast('กรุณาวางลิงก์เพลงก่อนนะคะ 🩵');
+                return;
+            }
+
+            // Check if YouTube URL
+            const ytMatch = url.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+            if (ytMatch && ytMatch[1]) {
+                stopAllPlayback(true);
+                updatePlayerVisualState(false);
+                const wrapper = document.getElementById('externalEmbedWrapper');
+                const frame = document.getElementById('externalEmbedFrame');
+                frame.src = `https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1`;
+                wrapper.classList.remove('hidden');
+                document.getElementById('bgmTrackTitle').textContent = '▶️ YouTube BGM';
+                document.getElementById('bgmTrackSub').textContent = 'กำลังเล่นผ่านหน้าต่าง YouTube';
+                showToast('โหลดวิดีโอเพลงจาก YouTube แล้วค่ะ 🎶');
+                return;
+            }
+
+            // Otherwise treat as direct audio file link (.mp3 / .ogg / .wav)
+            stopAllPlayback(true);
+            isCustomAudioMode = true;
+            const customAudio = document.getElementById('customAudioPlayer');
+            customAudio.src = url;
+            customAudio.volume = currentVolume;
+            customAudio.loop = true;
+
+            document.getElementById('bgmTrackTitle').textContent = '🎵 Custom Link BGM';
+            document.getElementById('bgmTrackSub').textContent = 'เพลงจากลิงก์ภายนอก';
+
+            customAudio.play().then(() => {
+                updatePlayerVisualState(true);
+                toggleCustomMusicModal();
+                showToast('เริ่มเล่นเพลงจากลิงก์แล้วค่ะ 🎶');
+            }).catch(() => {
+                showToast('ลิงก์นี้ไม่รองรับการเล่นเสียงโดยตรง ลองใช้ไฟล์ .mp3 หรือลิงก์ YouTube นะคะ');
+            });
+        }
+
+        // Sync custom HTML5 audio progress bar
+        const customAudioEl = document.getElementById('customAudioPlayer');
+        customAudioEl.addEventListener('timeupdate', () => {
+            if (isCustomAudioMode && customAudioEl.duration) {
+                const pct = (customAudioEl.currentTime / customAudioEl.duration) * 100;
+                document.getElementById('bgmProgressBar').style.width = `${pct}%`;
+                document.getElementById('bgmTimeText').textContent = formatTime(customAudioEl.currentTime);
+            }
+        });
+
+        // --- 9. Delicate Falling Particles Overlay & Tap-to-Spawn Mini Hearts/Stars ---
+        const particleThemes = [
+            { id: 'outline', icon: '🤍', label: 'โปรยหัวใจ & ดาว' },
+            { id: 'pastel',  icon: '🩵', label: 'หัวใจพาสเทล' },
+            { id: 'sky',     icon: '☁️', label: 'ก้อนเมฆ & วิ้งค์' },
+            { id: 'off',     icon: '✨', label: 'ปิดเอฟเฟกต์' }
+        ];
+        let currentParticleThemeIdx = 0;
+
+        function getParticleSVG(themeId, variantIndex) {
+            // Delicate thin outline hearts & 5-point stars matching the user's reference image
+            if (themeId === 'outline') {
+                const colors = ['#94b8db', '#8bb4dc', '#a5c4e4', '#7ea9d6'];
+                const stroke = colors[variantIndex % colors.length];
+                if (variantIndex % 2 === 0) {
+                    // Thin Outline Heart
+                    return `<svg viewBox="0 0 24 24" fill="none" stroke="${stroke}" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
+                        <path d="M12 20.5C12 20.5 3.5 14.8 3.5 8.6C3.5 5.8 5.7 3.8 8.3 3.8C10 3.8 11.4 4.7 12 6C12.6 4.7 14 3.8 15.7 3.8C18.3 3.8 20.5 5.8 20.5 8.6C20.5 14.8 12 20.5 12 20.5Z"/>
+                    </svg>`;
+                } else {
+                    // Thin Outline Rounded Star
+                    return `<svg viewBox="0 0 24 24" fill="none" stroke="${stroke}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full">
+                        <path d="M12 2.8L14.7 8.4L20.9 9.2L16.4 13.5L17.5 19.6L12 16.7L6.5 19.6L7.6 13.5L3.1 9.2L9.3 8.4L12 2.8Z"/>
+                    </svg>`;
+                }
+            }
+
+            // Soft Filled Pastel Blue & White Hearts
+            if (themeId === 'pastel') {
+                const fills = ['#bae6fd', '#93c5fd', '#dbeafe', '#ffffff'];
+                const fill = fills[variantIndex % fills.length];
+                return `<svg viewBox="0 0 24 24" fill="${fill}" stroke="#7ab8ff" stroke-width="1.2" class="w-full h-full">
+                    <path d="M12 20.5C12 20.5 3.5 14.8 3.5 8.6C3.5 5.8 5.7 3.8 8.3 3.8C10 3.8 11.4 4.7 12 6C12.6 4.7 14 3.8 15.7 3.8C18.3 3.8 20.5 5.8 20.5 8.6C20.5 14.8 12 20.5 12 20.5Z"/>
+                </svg>`;
+            }
+
+            // Fluffy Mini Clouds & 4-Point Sparkles
+            if (themeId === 'sky') {
+                if (variantIndex % 2 === 0) {
+                    return `<svg viewBox="0 0 28 20" fill="#ffffff" stroke="#93c5fd" stroke-width="1.4" class="w-full h-full">
+                        <path d="M7 17h14a4.5 4.5 0 0 0 .5-8.97A6 6 0 0 0 10.2 6.2 4.5 4.5 0 0 0 7 17z"/>
+                    </svg>`;
+                } else {
+                    return `<svg viewBox="0 0 24 24" fill="#bae6fd" stroke="#7ab8ff" stroke-width="1.2" class="w-full h-full">
+                        <path d="M12 2C12.5 7.5 16.5 11.5 22 12C16.5 12.5 12.5 16.5 12 22C11.5 16.5 7.5 12.5 2 12C7.5 11.5 11.5 7.5 12 2Z"/>
+                    </svg>`;
+                }
+            }
+            return '';
+        }
+
+        function renderFallingParticles() {
+            const container = document.getElementById('particleOverlay');
+            if (!container) return;
+            container.innerHTML = '';
+
+            const theme = particleThemes[currentParticleThemeIdx];
+            if (theme.id === 'off') return;
+
+            const particleCount = 22;
+            for (let i = 0; i < particleCount; i++) {
+                const el = document.createElement('div');
+                el.className = 'falling-particle';
+
+                const size = 14 + (i % 4) * 4; // 14px to 26px delicate sizes
+                const leftPct = ((i * 100) / particleCount + (Math.sin(i * 3.1) * 3.5 + 3.5)) % 96;
+                const duration = 11 + (i % 6) * 2.3; // 11s - 22.5s slow dreamy fall
+                const delay = -(i * 1.45); // Negative delay so screen already has particles on load
+                const sway = (i % 2 === 0 ? 1 : -1) * (14 + (i % 4) * 7);
+                const rotMid = (i % 2 === 0 ? 1 : -1) * (12 + (i % 3) * 8);
+                const rotEnd = -rotMid * 1.2;
+                const opacity = theme.id === 'outline' ? 0.58 : 0.68;
+
+                el.style.width = `${size}px`;
+                el.style.height = `${size}px`;
+                el.style.left = `${leftPct}%`;
+                el.style.setProperty('--p-dur', `${duration}s`);
+                el.style.setProperty('--p-delay', `${delay}s`);
+                el.style.setProperty('--p-sway', `${sway}px`);
+                el.style.setProperty('--p-rot-mid', `${rotMid}deg`);
+                el.style.setProperty('--p-rot-end', `${rotEnd}deg`);
+                el.style.setProperty('--p-opacity', opacity);
+
+                el.innerHTML = getParticleSVG(theme.id, i);
+                container.appendChild(el);
+            }
+        }
+
+        function cycleParticleTheme() {
+            currentParticleThemeIdx = (currentParticleThemeIdx + 1) % particleThemes.length;
+            const theme = particleThemes[currentParticleThemeIdx];
+            document.getElementById('particleThemeIcon').textContent = theme.icon;
+            document.getElementById('particleThemeLabel').textContent = theme.label;
+            renderFallingParticles();
+            showToast(`เอฟเฟกต์หน้าจอ: ${theme.label}`);
+        }
+
+        // Interactive Tap-to-Spawn Mini Hearts & Stars Burst on Click/Tap
+        document.addEventListener('pointerdown', (e) => {
+            const theme = particleThemes[currentParticleThemeIdx];
+            if (theme.id === 'off') return;
+
+            const burstCount = 3;
+            for (let i = 0; i < burstCount; i++) {
+                const spark = document.createElement('div');
+                spark.className = 'tap-burst-item';
+
+                const size = 12 + i * 3;
+                const angle = (-120 + i * 60 + (Math.random() * 20 - 10)) * (Math.PI / 180);
+                const dist = 22 + Math.random() * 18;
+                const tx = Math.cos(angle) * dist;
+                const ty = Math.sin(angle) * dist - 12;
+                const tr = (Math.random() * 40 - 20);
+
+                spark.style.left = `${e.clientX}px`;
+                spark.style.top = `${e.clientY}px`;
+                spark.style.width = `${size}px`;
+                spark.style.height = `${size}px`;
+                spark.style.setProperty('--tx', `${tx}px`);
+                spark.style.setProperty('--ty', `${ty}px`);
+                spark.style.setProperty('--tr', `${tr}deg`);
+
+                spark.innerHTML = getParticleSVG(theme.id, i);
+                document.body.appendChild(spark);
+
+                setTimeout(() => {
+                    spark.remove();
+                }, 900);
+            }
+        });
+
+        // Initialize interactive components on load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderCatRatingSelector();
+            renderReviewsList();
+            calculatePrice();
+            renderFallingParticles();
+        });
+    </script>
+</body>
+</html>
